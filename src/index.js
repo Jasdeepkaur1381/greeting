@@ -1,17 +1,49 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const date = new Date();
+const time = date.getHours();
+var texting = undefined;
+const cssSyl = {
+
+};
+if (time >= 1 && time < 11) {
+  texting = "Good Morning";
+  cssSyl.color = 'Green';
+}
+else if (time >= 12 && time <= 19) {
+  texting = "Good Afternoon";
+  cssSyl.color = 'Orange';
+}
+else if (time >= 20 && time <= 0) {
+  texting = "Good Night";
+  cssSyl.color = 'Black';
+}
+
+const heading = {
+  padding: '40px',
+  margin: 'auto',
+  fontSize: '60px',
+  backgroundColor: 'white',
+  borderRadius: '15px 15px',
+
+}
+const mainDiv = {
+  width: '100%',
+  height: '100vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'lavender',
+}
+ReactDOM.render(
+  <>
+    <div style={mainDiv}>
+      <h1 style={heading}><span>Hello Sir, </span><span style={cssSyl}>{texting}</span></h1>
+    </div>
+
+  </>
+
+  ,
+  document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
